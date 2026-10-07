@@ -9,6 +9,7 @@ export default defineConfig({
     host: true
   },
   build: {
+    target: 'es2020',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {

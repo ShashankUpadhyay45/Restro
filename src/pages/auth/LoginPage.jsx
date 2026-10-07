@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -32,6 +32,18 @@ export default function LoginPage() {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
+  const [render3D, setRender3D] = useState(false);
+
+  useEffect(() => {
+    // Only load heavy WebGL 3D scene on desktop devices (width >= 768px)
+    // and defer until initial paint is complete with 0ms TBT
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      const timer = setTimeout(() => {
+        setRender3D(true);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Form states
   const [name, setName] = useState('');
@@ -117,10 +129,12 @@ export default function LoginPage() {
 
   return (
     <main role="main" aria-label="Authentication portal" className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 overflow-hidden bg-[#07090c]">
-      {/* 3D Immersive Canvas Environment - Deferred Non-blocking */}
-      <Suspense fallback={null}>
-        <LoginScene3D role={role} />
-      </Suspense>
+      {/* 3D Immersive Canvas Environment - Deferred Non-blocking on Desktop */}
+      {render3D && (
+        <Suspense fallback={null}>
+          <LoginScene3D role={role} />
+        </Suspense>
+      )}
 
       {/* Ambient Radial Gradient Backdrops */}
       <div aria-hidden="true" className="absolute top-1/4 -left-32 w-96 h-96 bg-ember-600/15 rounded-full blur-[120px] pointer-events-none" />
