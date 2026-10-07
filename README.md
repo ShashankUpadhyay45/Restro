@@ -49,9 +49,8 @@
 - **Canvas Confetti** (Celebratory order confirmation bursts)
 
 ### Backend-Ready Architecture
-- Prepared for **Node.js**, **Express.js**, and **MongoDB Atlas**
-- Documented in `docs/API.md`, `docs/ARCHITECTURE.md`, `docs/DATABASE.md`, and `docs/FUTURE_BACKEND.md`
-- Placeholder controllers and routes in `backend-planned/`
+- Designed for seamless integration with **Node.js**, **Express.js**, and **MongoDB Atlas**
+- Clean service layer abstraction (`src/services/`) and REST API client (`src/api/`) allowing direct backend connectivity with zero frontend component modification
 
 ---
 
