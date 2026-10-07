@@ -1,0 +1,16 @@
+# EMBER & SPICE - Luxury 3D Restaurant Platform
+
+> Ember & Spice is a modern culinary experience offering authentic charcoal-grilled delicacies, interactive 3D table reservations, and seamless online dining.
+
+## Overview
+EMBER & SPICE is an interactive restaurant web application featuring role-based dashboards, 3D culinary visualizers, dynamic food filtering, and a table booking engine.
+
+## Public Pages
+- [Login Portal](https://restro-rho-eight.vercel.app/login): Sign-in and role selection for Customers, Restaurant Owners, and Kitchen Staff.
+- [Customer Home](https://restro-rho-eight.vercel.app/customer/home): Interactive hero, signature culinary collections, story, dining atmosphere showcase, and customer reviews.
+- [Culinary Menu](https://restro-rho-eight.vercel.app/customer/menu): Complete searchable menu with dietary tags, spice filters, and real-time cart actions.
+- [Table Booking](https://restro-rho-eight.vercel.app/customer/book-table): Interactive table reservation with date, time, guest count, and seating area selection.
+
+## Optional Links
+- [Cart & Checkout](https://restro-rho-eight.vercel.app/customer/cart): Review selected dishes and proceed to checkout.
+- [Order History](https://restro-rho-eight.vercel.app/customer/orders): View active and past orders with live status updates.

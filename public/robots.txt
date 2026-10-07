@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /owner/
+Disallow: /staff/
+
+Sitemap: https://restro-rho-eight.vercel.app/sitemap.xml

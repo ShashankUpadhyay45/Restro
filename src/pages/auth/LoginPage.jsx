@@ -113,13 +113,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 overflow-hidden bg-[#07090c]">
+    <main role="main" aria-label="Authentication portal" className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 overflow-hidden bg-[#07090c]">
       {/* 3D Immersive Canvas Environment */}
       <LoginScene3D role={role} />
 
       {/* Ambient Radial Gradient Backdrops */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-ember-600/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div aria-hidden="true" className="absolute top-1/4 -left-32 w-96 h-96 bg-ember-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <div aria-hidden="true" className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Floating Glass Authentication Container */}
       <motion.div
@@ -188,7 +188,7 @@ export default function LoginPage() {
         )}
 
         {/* Auth Form */}
-        <form onSubmit={handleSubmit} className="space-y-3.5">
+        <form onSubmit={handleSubmit} aria-label="Account authentication" className="space-y-3.5">
           {isRegisterMode && (
             <div>
               <label htmlFor="auth-name" className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
@@ -353,6 +353,6 @@ export default function LoginPage() {
           </button>
         </div>
       </motion.div>
-    </div>
+    </main>
   );
 }

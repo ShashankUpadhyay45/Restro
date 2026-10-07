@@ -69,6 +69,7 @@ export default function CustomCursor() {
     <>
       {/* Precision Center Ember Dot */}
       <motion.div
+        aria-hidden="true"
         className="fixed top-0 left-0 w-2 h-2 rounded-full bg-amber-400 pointer-events-none z-[9999] shadow-[0_0_8px_#fbbf24]"
         animate={{
           x: mousePosition.x - 4,
@@ -80,6 +81,7 @@ export default function CustomCursor() {
 
       {/* Fluid Trailing Aura Ring / Contextual HUD Pill */}
       <motion.div
+        aria-hidden="true"
         className={`fixed top-0 left-0 rounded-full border pointer-events-none z-[9998] transition-colors duration-200 flex items-center justify-center overflow-hidden ${
           isExpanded
             ? 'w-14 h-14 border-ember-500/80 bg-black/80 backdrop-blur-sm shadow-[0_0_20px_rgba(249,115,22,0.45)]'

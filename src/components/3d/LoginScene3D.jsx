@@ -153,6 +153,9 @@ export default function LoginScene3D({ role = 'customer' }) {
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
       <Canvas
+        role="presentation"
+        aria-hidden="true"
+        tabIndex={-1}
         camera={{ position: [0, 0.4, 5.5], fov: 45 }}
         gl={{ antialias: true, alpha: true }}
         dpr={[1, 1.5]}
