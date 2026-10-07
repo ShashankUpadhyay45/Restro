@@ -157,11 +157,11 @@ export default function LoginScene3D({ role = 'customer' }) {
         aria-hidden="true"
         tabIndex={-1}
         camera={{ position: [0, 0.4, 5.5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
+        dpr={[1, 1.2]}
       >
         <ambientLight intensity={0.4} />
-        <directionalLight position={[5, 8, 5]} intensity={1.2} castShadow />
+        <directionalLight position={[5, 8, 5]} intensity={1.2} />
         <pointLight position={[-4, 3, 2]} intensity={2.5} color={accentLight} />
         <pointLight position={[4, -2, -1]} intensity={1.5} color="#ea580c" />
         <spotLight position={[0, 6, 2]} angle={0.4} penumbra={1} intensity={2} color="#fef08a" />
@@ -173,17 +173,17 @@ export default function LoginScene3D({ role = 'customer' }) {
           <FloatingSpices />
         </Center>
 
-        {/* Floating Ember Sparkles & Rising Steam */}
+        {/* Floating Ember Sparkles & Rising Steam - Optimized particle budget */}
         <Sparkles
-          count={60}
+          count={25}
           scale={[7, 7, 7]}
-          size={3.5}
+          size={3}
           speed={0.6}
           opacity={0.7}
           color={accentLight}
         />
         <Sparkles
-          count={35}
+          count={15}
           scale={[5, 6, 4]}
           size={2}
           speed={0.3}

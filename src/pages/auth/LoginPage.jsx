@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -15,7 +15,10 @@ import {
   Phone,
   CheckCircle2
 } from 'lucide-react';
-import LoginScene3D from '../../components/3d/LoginScene3D';
+
+// Lazy-load heavy 3D WebGL scene to eliminate main-thread blocking on initial paint
+const LoginScene3D = lazy(() => import('../../components/3d/LoginScene3D'));
+
 import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -114,18 +117,20 @@ export default function LoginPage() {
 
   return (
     <main role="main" aria-label="Authentication portal" className="relative min-h-screen w-full flex items-center justify-center p-4 sm:p-6 overflow-hidden bg-[#07090c]">
-      {/* 3D Immersive Canvas Environment */}
-      <LoginScene3D role={role} />
+      {/* 3D Immersive Canvas Environment - Deferred Non-blocking */}
+      <Suspense fallback={null}>
+        <LoginScene3D role={role} />
+      </Suspense>
 
       {/* Ambient Radial Gradient Backdrops */}
       <div aria-hidden="true" className="absolute top-1/4 -left-32 w-96 h-96 bg-ember-600/15 rounded-full blur-[120px] pointer-events-none" />
       <div aria-hidden="true" className="absolute bottom-1/4 -right-32 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Floating Glass Authentication Container */}
+      {/* Floating Glass Authentication Container - Instant Visibility for LCP/FCP */}
       <motion.div
-        initial={{ opacity: 0, y: 25, scale: 0.96 }}
+        initial={false}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
         className="relative z-10 w-full max-w-md rounded-3xl glass-panel bg-zinc-950/80 border border-white/15 shadow-2xl p-6 sm:p-8 backdrop-blur-2xl"
       >
         {/* Brand Logo & Header */}
