@@ -35,12 +35,12 @@ export default function LoginPage() {
   const [render3D, setRender3D] = useState(false);
 
   useEffect(() => {
-    // Only load heavy WebGL 3D scene on desktop devices (width >= 768px)
-    // and defer until initial paint is complete with 0ms TBT
-    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+    // Mount the 3D scene on all devices (mobile, tablet, desktop)
+    // Deferred by a frame so initial paint (FCP/LCP) is instant
+    if (typeof window !== 'undefined') {
       const timer = setTimeout(() => {
         setRender3D(true);
-      }, 150);
+      }, 50);
       return () => clearTimeout(timer);
     }
   }, []);

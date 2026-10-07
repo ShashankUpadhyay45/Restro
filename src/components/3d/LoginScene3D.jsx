@@ -24,7 +24,7 @@ function BanquetPlate({ role }) {
     <group ref={plateRef} position={[0, -0.6, 0]}>
       {/* Outer Ceramic Charger Plate */}
       <mesh receiveShadow castShadow>
-        <cylinderGeometry args={[2.4, 2.0, 0.15, 64]} />
+        <cylinderGeometry args={[2.4, 2.0, 0.15, 36]} />
         <meshStandardMaterial
           color="#181a20"
           metalness={0.7}
@@ -34,7 +34,7 @@ function BanquetPlate({ role }) {
 
       {/* Gold/Ember Filigree Rim Ring */}
       <mesh position={[0, 0.08, 0]}>
-        <torusGeometry args={[2.3, 0.06, 16, 64]} />
+        <torusGeometry args={[2.3, 0.06, 12, 40]} />
         <meshStandardMaterial
           color={primaryColor}
           emissive={primaryColor}
@@ -46,7 +46,7 @@ function BanquetPlate({ role }) {
 
       {/* Inner Gourmet Glaze Bowl */}
       <mesh position={[0, 0.1, 0]}>
-        <cylinderGeometry args={[1.7, 1.4, 0.12, 48]} />
+        <cylinderGeometry args={[1.7, 1.4, 0.12, 32]} />
         <meshStandardMaterial
           color="#0d0f14"
           metalness={0.5}
