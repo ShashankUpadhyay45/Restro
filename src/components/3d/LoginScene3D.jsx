@@ -151,7 +151,7 @@ export default function LoginScene3D({ role = 'customer' }) {
   }, [role]);
 
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none">
+    <div className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0.4, 5.5], fov: 45 }}
         gl={{ antialias: true, alpha: true }}

@@ -3,49 +3,49 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from '../components/common/ProtectedRoute';
 
 // Layouts
-import CustomerLayout from '../layouts/CustomerLayout';
-import OwnerLayout from '../layouts/OwnerLayout';
-import StaffLayout from '../layouts/StaffLayout';
+const CustomerLayout = lazy(() => import('../layouts/CustomerLayout'));
+const OwnerLayout = lazy(() => import('../layouts/OwnerLayout'));
+const StaffLayout = lazy(() => import('../layouts/StaffLayout'));
 
 // Auth
-import LoginPage from '../pages/auth/LoginPage';
+const LoginPage = lazy(() => import('../pages/auth/LoginPage'));
 
 // Customer Pages
-import CustomerHomePage from '../pages/customer/CustomerHomePage';
-import CustomerMenuPage from '../pages/customer/CustomerMenuPage';
-import FoodDetailPage from '../pages/customer/FoodDetailPage';
-import CartPage from '../pages/customer/CartPage';
-import CheckoutPage from '../pages/customer/CheckoutPage';
-import OrderSuccessPage from '../pages/customer/OrderSuccessPage';
-import OrderTrackingPage from '../pages/customer/OrderTrackingPage';
-import OrderHistoryPage from '../pages/customer/OrderHistoryPage';
-import TableBookingPage from '../pages/customer/TableBookingPage';
-import CustomerProfilePage from '../pages/customer/CustomerProfilePage';
-import FavoritesPage from '../pages/customer/FavoritesPage';
-import CustomerNotificationsPage from '../pages/customer/CustomerNotificationsPage';
+const CustomerHomePage = lazy(() => import('../pages/customer/CustomerHomePage'));
+const CustomerMenuPage = lazy(() => import('../pages/customer/CustomerMenuPage'));
+const FoodDetailPage = lazy(() => import('../pages/customer/FoodDetailPage'));
+const CartPage = lazy(() => import('../pages/customer/CartPage'));
+const CheckoutPage = lazy(() => import('../pages/customer/CheckoutPage'));
+const OrderSuccessPage = lazy(() => import('../pages/customer/OrderSuccessPage'));
+const OrderTrackingPage = lazy(() => import('../pages/customer/OrderTrackingPage'));
+const OrderHistoryPage = lazy(() => import('../pages/customer/OrderHistoryPage'));
+const TableBookingPage = lazy(() => import('../pages/customer/TableBookingPage'));
+const CustomerProfilePage = lazy(() => import('../pages/customer/CustomerProfilePage'));
+const FavoritesPage = lazy(() => import('../pages/customer/FavoritesPage'));
+const CustomerNotificationsPage = lazy(() => import('../pages/customer/CustomerNotificationsPage'));
 
 // Owner Dashboard Pages
-import OwnerDashboardOverview from '../pages/owner/OwnerDashboardOverview';
-import OwnerOrdersPage from '../pages/owner/OwnerOrdersPage';
-import OwnerMenuPage from '../pages/owner/OwnerMenuPage';
-import OwnerCategoriesPage from '../pages/owner/OwnerCategoriesPage';
-import OwnerTablesPage from '../pages/owner/OwnerTablesPage';
-import OwnerBookingsPage from '../pages/owner/OwnerBookingsPage';
-import OwnerCustomersPage from '../pages/owner/OwnerCustomersPage';
-import OwnerStaffPage from '../pages/owner/OwnerStaffPage';
-import OwnerOffersPage from '../pages/owner/OwnerOffersPage';
-import OwnerInventoryPage from '../pages/owner/OwnerInventoryPage';
-import OwnerAnalyticsPage from '../pages/owner/OwnerAnalyticsPage';
-import OwnerReviewsPage from '../pages/owner/OwnerReviewsPage';
-import OwnerSettingsPage from '../pages/owner/OwnerSettingsPage';
+const OwnerDashboardOverview = lazy(() => import('../pages/owner/OwnerDashboardOverview'));
+const OwnerOrdersPage = lazy(() => import('../pages/owner/OwnerOrdersPage'));
+const OwnerMenuPage = lazy(() => import('../pages/owner/OwnerMenuPage'));
+const OwnerCategoriesPage = lazy(() => import('../pages/owner/OwnerCategoriesPage'));
+const OwnerTablesPage = lazy(() => import('../pages/owner/OwnerTablesPage'));
+const OwnerBookingsPage = lazy(() => import('../pages/owner/OwnerBookingsPage'));
+const OwnerCustomersPage = lazy(() => import('../pages/owner/OwnerCustomersPage'));
+const OwnerStaffPage = lazy(() => import('../pages/owner/OwnerStaffPage'));
+const OwnerOffersPage = lazy(() => import('../pages/owner/OwnerOffersPage'));
+const OwnerInventoryPage = lazy(() => import('../pages/owner/OwnerInventoryPage'));
+const OwnerAnalyticsPage = lazy(() => import('../pages/owner/OwnerAnalyticsPage'));
+const OwnerReviewsPage = lazy(() => import('../pages/owner/OwnerReviewsPage'));
+const OwnerSettingsPage = lazy(() => import('../pages/owner/OwnerSettingsPage'));
 
 // Staff Dashboard Pages
-import StaffDashboardPage from '../pages/staff/StaffDashboardPage';
+const StaffDashboardPage = lazy(() => import('../pages/staff/StaffDashboardPage'));
 
 // Error Pages
-import NotFoundPage from '../pages/error/NotFoundPage';
-import UnauthorizedPage from '../pages/error/UnauthorizedPage';
-import ServerErrorPage from '../pages/error/ServerErrorPage';
+const NotFoundPage = lazy(() => import('../pages/error/NotFoundPage'));
+const UnauthorizedPage = lazy(() => import('../pages/error/UnauthorizedPage'));
+const ServerErrorPage = lazy(() => import('../pages/error/ServerErrorPage'));
 
 export default function AppRoutes() {
   return (

@@ -155,13 +155,15 @@ export default function LoginPage() {
                 key={item.id}
                 type="button"
                 onClick={() => handleRoleChange(item.id)}
+                aria-label={`Select ${item.label} role`}
+                aria-pressed={isActive}
                 className={`py-2 px-1 rounded-xl text-xs font-semibold flex flex-col items-center gap-1 transition-all ${
                   isActive
                     ? 'bg-gradient-to-r from-ember-600 to-amber-600 text-white shadow-lg'
                     : 'text-zinc-400 hover:text-white hover:bg-white/5'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
+                <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{item.label}</span>
               </button>
             );
@@ -180,7 +182,7 @@ export default function LoginPage() {
 
         {/* Error Alert */}
         {formError && (
-          <div className="mb-4 p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs text-center">
+          <div role="alert" className="mb-4 p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs text-center">
             {formError}
           </div>
         )}
@@ -189,11 +191,12 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-3.5">
           {isRegisterMode && (
             <div>
-              <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+              <label htmlFor="auth-name" className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
                 Full Name
               </label>
               <div className="relative">
                 <input
+                  id="auth-name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -205,12 +208,13 @@ export default function LoginPage() {
           )}
 
           <div>
-            <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
+            <label htmlFor="auth-email" className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
               <input
+                id="auth-email"
                 type="email"
                 required
                 value={email}
@@ -223,13 +227,14 @@ export default function LoginPage() {
 
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
+              <label htmlFor="auth-password" className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400">
                 Password
               </label>
               {!isRegisterMode && (
                 <button
                   type="button"
                   onClick={() => alert("For this demonstration, use any password or click 1-Click Demo Login below.")}
+                  aria-label="Forgot password help"
                   className="text-[11px] text-ember-400 hover:underline"
                 >
                   Forgot password?
@@ -237,8 +242,9 @@ export default function LoginPage() {
               )}
             </div>
             <div className="relative">
-              <Lock className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Lock className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
               <input
+                id="auth-password"
                 type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
@@ -249,16 +255,18 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="p-1.5 text-zinc-400 hover:text-white absolute right-2.5 top-1/2 -translate-y-1/2"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                className="p-1.5 text-zinc-400 hover:text-white absolute right-2.5 top-1/2 -translate-y-1/2 focus:outline-none"
               >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                {showPassword ? <EyeOff className="w-4 h-4" aria-hidden="true" /> : <Eye className="w-4 h-4" aria-hidden="true" />}
               </button>
             </div>
           </div>
 
           <div className="flex items-center justify-between pt-1">
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-zinc-400">
+            <label htmlFor="remember-station" className="flex items-center gap-2 cursor-pointer text-xs text-zinc-400">
               <input
+                id="remember-station"
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
@@ -272,6 +280,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
+            aria-label={isRegisterMode ? 'Register & Enter' : `Sign In as ${roleMeta[role].badge.split(' ')[0]}`}
             className="w-full mt-2 py-3 rounded-xl bg-gradient-to-r from-ember-600 via-amber-600 to-rose-600 text-white font-semibold text-xs shadow-glow-ember hover:opacity-95 transition-all flex items-center justify-center gap-2"
           >
             {loading ? (
@@ -279,7 +288,7 @@ export default function LoginPage() {
             ) : (
               <>
                 <span>{isRegisterMode ? 'Register & Enter' : `Sign In as ${roleMeta[role].badge.split(' ')[0]}`}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </>
             )}
           </button>
@@ -294,6 +303,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => { handleRoleChange('customer'); }}
+              aria-label="Use Customer demo credentials"
               className={`text-[10px] px-2.5 py-1 rounded-lg border ${
                 role === 'customer' ? 'border-ember-500 bg-ember-500/20 text-ember-300' : 'border-white/10 text-zinc-400'
               }`}
@@ -303,6 +313,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => { handleRoleChange('owner'); }}
+              aria-label="Use Owner demo credentials"
               className={`text-[10px] px-2.5 py-1 rounded-lg border ${
                 role === 'owner' ? 'border-purple-500 bg-purple-500/20 text-purple-300' : 'border-white/10 text-zinc-400'
               }`}
@@ -312,6 +323,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => { handleRoleChange('staff'); }}
+              aria-label="Use Staff demo credentials"
               className={`text-[10px] px-2.5 py-1 rounded-lg border ${
                 role === 'staff' ? 'border-emerald-500 bg-emerald-500/20 text-emerald-300' : 'border-white/10 text-zinc-400'
               }`}
